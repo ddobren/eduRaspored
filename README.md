@@ -12,7 +12,7 @@ Slijedite ove korake kako biste postavili i pokrenuli aplikaciju:
 
 3. Za frontend, pokrenite sadržaj na zasebnom serveru.
 
-4. Kako biste izbjegli probleme s CORS politikom, izmijenite web adresu podrijetla u kodu.
+4. Kako biste izbjegli probleme s CORS politikom, izmijenite web adresu u kodu.
 
 ## Postavljanje Backend-a (XAMPP)
 
@@ -22,7 +22,9 @@ Slijedite ove korake kako biste postavili i pokrenuli aplikaciju:
 
 3. Zalijepite sadržaj u `htdocs` folder.
 
-4. Konfigurirajte XAMPP i provjerite je li server pokrenut.
+4. Importajte `eduRaspored.sql` datoteku u MySQL bazu podataka.
+
+5. Konfigurirajte XAMPP i provjerite je li server pokrenut.
 
 ## Postavljanje Frontend-a
 
@@ -30,8 +32,8 @@ Slijedite ove korake kako biste postavili i pokrenuli aplikaciju:
 
 ## CORS Politika
 
-Kako biste izbjegli probleme s CORS politikom, ažurirajte web adresu podrijetla u kodu. To obično uključuje izmjenu odgovarajuće konfiguracije ili API endpointa.
+Napomena: Kako biste izbjegli probleme s CORS politikom, ažurirajte web adresu u kodu. To obično uključuje izmjenu odgovarajuće konfiguracije ili API endpointa.
 
-Napomena: Provjerite imate li potrebne dozvole za izmjenu konfiguracija servera i frontend koda.
+## Supabase JSON Sadržaj
 
-Slobodno se obratite ako vam je potrebna dodatna pomoć ili rješavanje problema.
+JSON sadržaj možete pronaći na [https://github.com/ddobren/CroHS](https://github.com/ddobren/CroHS).
