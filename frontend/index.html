@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eduRaspored | Rasporedi</title>
+
+    <!-- SEO TAGS -->
+    <meta name="description"
+        content="Dobrodošli na eduRaspored - platformu za pregled informacija i rasporeda u srednjim školama diljem Hrvatske. Izrađena je u svrhu sudjelovanja u natjecanju i pruža beta verziju aplikacije.">
+    <meta name="author" content="Dobren Dragojević">
+
+    <meta property="og:title" content="eduRaspored">
+    <meta property="og:description"
+        content="Dobrodošli na eduRaspored - platformu za pregled informacija i rasporeda u srednjim školama diljem Hrvatske. Izrađena je u svrhu sudjelovanja u natjecanju i pruža beta verziju aplikacije.">
+    <meta property="og:image" content="assets/logo.png">
+    <!-- SEO TAGS -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- JS -->
+    <script src="js/libraries/popper.min.js" defer></script>
+    <script src="js/libraries/bootstrap.min.js" defer></script>
+    <script src="js/libraries/fuse.min.js" defer></script>
+    <script src="js/libraries/supabase.min.js" defer></script>
+    <script src="js/libraries/axios.min.js" defer></script>
+    <!-- ... -->
+    <link rel="stylesheet" href="css/SearchEngine.css">
+
+    <script src="js/userLoggedIn.js" defer type="module"></script>
+    <script src="js/Nav.js" defer type="module"></script>
+    <script src="js/SearchEngine.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 py-3">
+            <div class="container-xl">
+                <!-- Logo -->
+                <a class="navbar-brand" href="/">
+                    <img src="assets/logo.png" alt="eduRaspored" class="modern-logo" loading="lazy">
+                </a>
+                <!-- Navbar toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Nav -->
+                    <div class="navbar-nav mx-auto d-flex justify-content-center text-center">
+                        <div class="__action-links">
+                        </div>
+                    </div>
+                    <!-- Right navigation -->
+                    <div class="__user-section">
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- BETA APP WARNING ALERT -->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <div>
+                    <strong>Upozorenje!</strong>
+                    Aplikacija je u beta verziji i predstavlja prototip.
+                    Očekujte promjene u konačnoj verziji.
+                </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </header>
+    <!-- HEADER FINISH -->
+
+    <!-- MAIN START -->
+    <main class="container my-5 mb-3">
+        <h1 class="text-center mb-5 text-muted">
+            <span class="highlight-text">Raspored</span> škola
+        </h1>
+
+        <!-- RESPONSE MESSAGE -->
+        <div id="error-message" class="alert alert-danger d-none" role="alert"></div>
+        <!-- RESPONSE MESSAGE -->
+
+        <!-- Raspored -->
+        <div class="schedule-container">
+
+            <!-- Schedule loading -->
+            <div class="schedule__loading-container d-none">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="spinner-border text-primary mt-3" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Schedule loading -->
+
+            <!-- RASPORED WRAPPER -->
+            <div class="raspored-wrapper">
+
+                <div class="raspored-wrapper__text">
+
+                </div>
+
+                <!-- raspored body -->
+                <div class="raspored-body"></div>
+
+            </div>
+            <!-- RASPORED WRAPPER -->
+
+        </div>
+        <!-- Raspored -->
+
+        <!-- SEARCH ENGINE -->
+        <div class="search-container">
+            <div class="input-group">
+                <input type="text" id="searchInput" class="form-control rounded-0" placeholder="Unesite ime škole...">
+                <div class="input-group-append">
+                    <button class="btn btn-primary rounded-0" type="button" id="searchButton">
+                        <i class="fas fa-search"></i> Pretraži
+                    </button>
+                </div>
+            </div>
+
+            <ul class="list-group mt-3" id="autocompleteList"></ul>
+        </div>
+        <!-- SEARCH ENGINE -->
+    </main>
+    <!-- MAIN FINISH -->
+
+    <!-- FOOTER START -->
+    <footer class="text-center text-muted bg-light py-4 border-top">
+        <div class="container">
+            <p class="mb-1">Powered by: <span class="highlight-text">Ekonomska i trgovačka škola Dubrovnik</span></p>
+            <p class="mb-1">Programirao: <strong>Dobren Dragojević (1.D Web dizajner)</strong></p>
+            <p class="mt-3">Copyright © 2024 eduRaspored</p>
+
+            <div class="d-flex justify-content-center align-items-center mt-4">
+                <img src="assets/logo-inline.png" alt="Logo" class="logo" width="300px" height="auto" loading="lazy">
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER FINISH -->
+
+    <!-- MODAL START -->
+    <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookieModalLabel">Upotreba kolačića</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Naša web stranica koristi kolačiće kako bi vam pružila bolje korisničko iskustvo. Korištenjem
+                        naše stranice pristajete na sve kolačiće u skladu s našom Politikom kolačića.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        id="cookieAcceptButton">Prihvaćam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL END -->
+
+
+</body>
+
+</html>

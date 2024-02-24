@@ -1,0 +1,51 @@
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+.highlight-text {
+    background: linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+    display: inline;
+    background-clip: text;
+    color: transparent;
+}
+
+.search-container {
+    margin-top: 20px;
+}
+
+.input-group {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.form-control {
+    border-radius: 0;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary {
+    border-radius: 0;
+}
+
+.list-group {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group-item {
+    border: 1px solid #ddd;
+    border-radius: 0;
+    margin-bottom: 5px;
+    cursor: pointer;
+}

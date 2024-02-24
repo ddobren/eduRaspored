@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eduRaspored | Dashboard</title>
+
+    <!-- SEO TAGS -->
+    <meta name="description"
+        content="Dobrodošli na eduRaspored - platformu za pregled informacija i rasporeda u srednjim školama diljem Hrvatske. Izrađena je u svrhu sudjelovanja u natjecanju i pruža beta verziju aplikacije.">
+    <meta name="author" content="Dobren Dragojević">
+
+    <meta property="og:title" content="eduRaspored">
+    <meta property="og:description"
+        content="Dobrodošli na eduRaspored - platformu za pregled informacija i rasporeda u srednjim školama diljem Hrvatske. Izrađena je u svrhu sudjelovanja u natjecanju i pruža beta verziju aplikacije.">
+    <meta property="og:image" content="assets/logo.png">
+    <!-- SEO TAGS -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- JS -->
+    <script src="js/libraries/popper.min.js" defer></script>
+    <script src="js/libraries/bootstrap.min.js" defer></script>
+    <script src="js/libraries/fuse.min.js" defer></script>
+    <script src="js/libraries/supabase.min.js" defer></script>
+    <script src="js/libraries/axios.min.js" defer></script>
+    <script src="js/libraries/jquery-3.7.1.min.js" defer></script>
+
+    <script src="js/decodeUser.js" type="module"></script>
+    <!-- ... -->
+    <link rel="stylesheet" href="css/Dashboard.css">
+
+    <script src="js/userLoggedIn.js" defer type="module"></script>
+    <script src="js/Nav.js" defer type="module"></script>
+    <script src="js/Dashboard.js" defer type="module"></script>
+</head>
+
+<body>
+    <!-- HEADER START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 py-3">
+            <div class="container-xl">
+                <!-- Logo -->
+                <a class="navbar-brand" href="/">
+                    <img src="assets/logo.png" alt="eduRaspored" class="modern-logo" loading="lazy">
+                </a>
+                <!-- Navbar toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Nav -->
+                    <div class="navbar-nav mx-auto d-flex justify-content-center text-center">
+                        <div class="__action-links">
+                        </div>
+                    </div>
+                    <!-- Right navigation -->
+                    <div class="__user-section">
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- BETA APP WARNING ALERT -->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <div>
+                    <strong>Upozorenje!</strong>
+                    Aplikacija je u beta verziji i predstavlja prototip.
+                    Očekujte promjene u konačnoj verziji.
+                </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </header>
+    <!-- HEADER FINISH -->
+
+    <!-- MAIN START -->
+    <main class="container my-5">
+        <h2 class="text-center my-3 text-muted">Dodaj raspored</h2>
+
+        <!-- Error message display div -->
+        <div id="response-message" class="alert alert-danger d-none" role="alert"></div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="search-container mb-4">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" class="form-control rounded-0"
+                            placeholder="Unesite ime škole..." required>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary rounded-0" type="button" id="searchButton">
+                                Dodaj
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-group my-3">
+                        <input type="text" id="classInfo" class="form-control rounded-0"
+                            placeholder="Unesite razred i smjer..." required>
+                    </div>
+
+                    <!-- Autocomplete rezultati -->
+                    <ul class="list-group mt-3" id="autocompleteList"></ul>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Dan</th>
+                            <th scope="col">Predmeti</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rasporedBody">
+                        <!-- Ovdje će se dinamički dodavati redovi za dane -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN FINISH -->
+
+
+</body>
+
+</html>
